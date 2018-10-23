@@ -1,0 +1,122 @@
+﻿namespace PapelesApp.Controllers
+{
+    public class MaestroPapelesController : Controller
+    {
+        private Entities db = new Entities();
+
+        // GET: MaestroPapeles
+        public ActionResult Index()
+        {
+            var iPP_MAESTRO_PAPELES = db.IPP_MAESTRO_PAPELES.Include(i => i.IPP_TIPOS_DE_PAPEL);
+            return View(iPP_MAESTRO_PAPELES.ToList());
+        }
+
+        // GET: MaestroPapeles/Details/5
+        public ActionResult Details(decimal id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES = db.IPP_MAESTRO_PAPELES.Find(id);
+            if (iPP_MAESTRO_PAPELES == null)
+            {
+                return HttpNotFound();
+            }
+            return View(iPP_MAESTRO_PAPELES);
+        }
+
+        // GET: MaestroPapeles/Create
+        public ActionResult Create()
+        {
+            ViewBag.MP_ID_TIPO_PAPEL = new SelectList(db.IPP_TIPOS_DE_PAPEL, "TDP_CODIGO", "TDP_CLAVE");
+            return View();
+        }
+
+        // POST: MaestroPapeles/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "MP_ID_PAPEL,MP_ID_TIPO_PAPEL,MP_CALIBRE,MP_ANCHO,MP_CODIGO_ALTERNO")] IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES)
+        {
+            if (ModelState.IsValid)
+            {
+                db.IPP_MAESTRO_PAPELES.Add(iPP_MAESTRO_PAPELES);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.MP_ID_TIPO_PAPEL = new SelectList(db.IPP_TIPOS_DE_PAPEL, "TDP_CODIGO", "TDP_CLAVE", iPP_MAESTRO_PAPELES.MP_ID_TIPO_PAPEL);
+            return View(iPP_MAESTRO_PAPELES);
+        }
+
+        // GET: MaestroPapeles/Edit/5
+        public ActionResult Edit(decimal id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES = db.IPP_MAESTRO_PAPELES.Find(id);
+            if (iPP_MAESTRO_PAPELES == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MP_ID_TIPO_PAPEL = new SelectList(db.IPP_TIPOS_DE_PAPEL, "TDP_CODIGO", "TDP_CLAVE", iPP_MAESTRO_PAPELES.MP_ID_TIPO_PAPEL);
+            return View(iPP_MAESTRO_PAPELES);
+        }
+
+        // POST: MaestroPapeles/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MP_ID_PAPEL,MP_ID_TIPO_PAPEL,MP_CALIBRE,MP_ANCHO,MP_CODIGO_ALTERNO")] IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(iPP_MAESTRO_PAPELES).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.MP_ID_TIPO_PAPEL = new SelectList(db.IPP_TIPOS_DE_PAPEL, "TDP_CODIGO", "TDP_CLAVE", iPP_MAESTRO_PAPELES.MP_ID_TIPO_PAPEL);
+            return View(iPP_MAESTRO_PAPELES);
+        }
+
+        // GET: MaestroPapeles/Delete/5
+        public ActionResult Delete(decimal id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES = db.IPP_MAESTRO_PAPELES.Find(id);
+            if (iPP_MAESTRO_PAPELES == null)
+            {
+                return HttpNotFound();
+            }
+            return View(iPP_MAESTRO_PAPELES);
+        }
+
+        // POST: MaestroPapeles/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(decimal id)
+        {
+            IPP_MAESTRO_PAPELES iPP_MAESTRO_PAPELES = db.IPP_MAESTRO_PAPELES.Find(id);
+            db.IPP_MAESTRO_PAPELES.Remove(iPP_MAESTRO_PAPELES);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="IPP_MAESTRO_COSTO_PAPEL">
+      <EntityTypeMapping TypeName="Model.IPP_MAESTRO_COSTO_PAPEL">
+        <MappingFragment StoreEntitySet="IPP_MAESTRO_COSTO_PAPEL">
+          <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+          <ScalarProperty Name="ID_MAESTRO_PAPELES" ColumnName="ID_MAESTRO_PAPELES" />
+          <ScalarProperty Name="MCP_COSTO_PROMEDIO_Q" ColumnName="MCP_COSTO_PROMEDIO_Q" />
+          <ScalarProperty Name="MCP_ULTIMO_COSTO_Q" ColumnName="MCP_ULTIMO_COSTO_Q" />
+          <ScalarProperty Name="MCP_COSTO_PROMEDIO_USD" ColumnName="MCP_COSTO_PROMEDIO_USD" />
+          <ScalarProperty Name="MCP_ULTIMO_COSTO_USD" ColumnName="MCP_ULTIMO_COSTO_USD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPP_MAESTRO_COSTO_PAPEL_BK">
+      <EntityTypeMapping TypeName="Model.IPP_MAESTRO_COSTO_PAPEL_BK">
+        <MappingFragment StoreEntitySet="IPP_MAESTRO_COSTO_PAPEL_BK">
+          <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+          <ScalarProperty Name="ID_MAESTRO_PAPELES" ColumnName="ID_MAESTRO_PAPELES" />
+          <ScalarProperty Name="MCP_COSTO_PROMEDIO_Q" ColumnName="MCP_COSTO_PROMEDIO_Q" />
+          <ScalarProperty Name="MCP_ULTIMO_COSTO_Q" ColumnName="MCP_ULTIMO_COSTO_Q" />
+          <ScalarProperty Name="MCP_COSTO_PROMEDIO_USD" ColumnName="MCP_COSTO_PROMEDIO_USD" />
+          <ScalarProperty Name="MCP_ULTIMO_COSTO_USD" ColumnName="MCP_ULTIMO_COSTO_USD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPP_MAESTRO_PAPELES">
+      <EntityTypeMapping TypeName="Model.IPP_MAESTRO_PAPELES">
+        <MappingFragment StoreEntitySet="IPP_MAESTRO_PAPELES">
+          <ScalarProperty Name="MP_ID_PAPEL" ColumnName="MP_ID_PAPEL" />
+          <ScalarProperty Name="MP_ID_TIPO_PAPEL" ColumnName="MP_ID_TIPO_PAPEL" />
+          <ScalarProperty Name="MP_CALIBRE" ColumnName="MP_CALIBRE" />
+          <ScalarProperty Name="MP_ANCHO" ColumnName="MP_ANCHO" />
+          <ScalarProperty Name="MP_CODIGO_ALTERNO" ColumnName="MP_CODIGO_ALTERNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPP_MAESTRO_PAPELES_BK">
+      <EntityTypeMapping TypeName="Model.IPP_MAESTRO_PAPELES_BK">
+        <MappingFragment StoreEntitySet="IPP_MAESTRO_PAPELES_BK">
+          <ScalarProperty Name="MP_ID_PAPEL" ColumnName="MP_ID_PAPEL" />
+          <ScalarProperty Name="MP_ID_TIPO_PAPEL" ColumnName="MP_ID_TIPO_PAPEL" />
+          <ScalarProperty Name="MP_CALIBRE" ColumnName="MP_CALIBRE" />
+          <ScalarProperty Name="MP_ANCHO" ColumnName="MP_ANCHO" />
+          <ScalarProperty Name="MP_CODIGO_ALTERNO" ColumnName="MP_CODIGO_ALTERNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPP_TIPOS_DE_PAPEL">
+      <EntityTypeMapping TypeName="Model.IPP_TIPOS_DE_PAPEL">
+        <MappingFragment StoreEntitySet="IPP_TIPOS_DE_PAPEL">
+          <ScalarProperty Name="TDP_CODIGO" ColumnName="TDP_CODIGO" />
+          <ScalarProperty Name="TDP_CLAVE" ColumnName="TDP_CLAVE" />
+          <ScalarProperty Name="TDP_DESCRIPCION" ColumnName="TDP_DESCRIPCION" />
+          <ScalarProperty Name="TDP_COLOR" ColumnName="TDP_COLOR" />
+          <ScalarProperty Name="TDP_CALIDAD_DE_PAPEL" ColumnName="TDP_CALIDAD_DE_PAPEL" />
+          <ScalarProperty Name="TDP_CUENTA_CONTABLE" ColumnName="TDP_CUENTA_CONTABLE" />
+          <ScalarProperty Name="TDP_FACTOR_CONTABLE" ColumnName="TDP_FACTOR_CONTABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPP_TIPOS_DE_PAPEL_BK">
+      <EntityTypeMapping TypeName="Model.IPP_TIPOS_DE_PAPEL_BK">
+        <MappingFragment StoreEntitySet="IPP_TIPOS_DE_PAPEL_BK">
+          <ScalarProperty Name="TDP_CODIGO" ColumnName="TDP_CODIGO" />
+          <ScalarProperty Name="TDP_CLAVE" ColumnName="TDP_CLAVE" />
+          <ScalarProperty Name="TDP_DESCRIPCION" ColumnName="TDP_DESCRIPCION" />
+          <ScalarProperty Name="TDP_COLOR" ColumnName="TDP_COLOR" />
+          <ScalarProperty Name="TDP_CALIDAD_DE_PAPEL" ColumnName="TDP_CALIDAD_DE_PAPEL" />
+          <ScalarProperty Name="TDP_CUENTA_CONTABLE" ColumnName="TDP_CUENTA_CONTABLE" />
+          <ScalarProperty Name="TDP_FACTOR_CONTABLE" ColumnName="TDP_FACTOR_CONTABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<PapelesApp.Models.IPP_MAESTRO_PAPELES>
+
+
+<h3 align="center">Listado de Tipos de Papel</h3>
+@if (TempData["notice"] != null)
+{
+    <p align="center">@TempData["notice"]</p>
+}
+@if (TempData["noticia"] != null)
+{
+    <p align="center">@TempData["noticia"]</p>
+}
+@{
+
+    <div>
+       
+
+        @using (Html.BeginForm("Index", "MaestroPapeles", FormMethod.Get))
+        {
+            
+            <p align="center">
+                Busqueda por Código: @Html.TextBox("busqueda")
+               
+                <input type="submit"  value="Busqueda" />
+
+                <input type="button" value="Registrar Nuevo Papel" onclick="location.href='@Url.Action("Create", "MaestroPapeles")'" />
+
+            </p>
+
+
+        }
+    </div>
+
+
+    ViewBag.Title = "Busqueda";
+    var grid = new WebGrid(source: Model, rowsPerPage: 12, defaultSort: "MP_ID_PAPEL", columnNames: new[]
+    { "MP_CALIBRE", "MP_ANCHO", "IPP_TIPOS_DE_PAPEL.TDP_DESCRIPCION", "MP_CODIGO_ALTERNO" });
+}
+
+<style type="text/css">
+    .webgrid-table {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        width: 650px;
+        display: table;
+        border-collapse: collapse;
+        border: solid #C5C5C5;
+        background-color: white;
+        margin: auto;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #C5C5C5;
+            padding: 3px 7px 2px;
+        }
+
+    .webgrid-header, .webgrid-header a {
+        background-color: #c3352b;
+        color: #ffffff;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: azure;
+        padding: 3px 7px 2px;
+    }
+
+    .col1Width {
+        width: 55px;
+    }
+
+    .col2Width {
+        width: 220px;
+    }
+</style>
+
+@grid.GetHtml(tableStyle: "webgrid-table",
+    headerStyle: "webgrid-header",
+    footerStyle: "webgrid-footer",
+    alternatingRowStyle: "webgrid-alternating-row",
+    selectedRowStyle: "webgrid-selected-row",
+    rowStyle: "webgrid-row-style", columns: grid.Columns(
+
+grid.Column(columnName: "MP_CALIBRE", header: "Calibre"),
+grid.Column(columnName: "MP_ANCHO", header: "Ancho"),
+grid.Column(columnName: "IPP_TIPOS_DE_PAPEL.TDP_DESCRIPCION", header: "Tipo de Papel"),
+grid.Column(columnName: "MP_CODIGO_ALTERNO", header: "Codigo"),
+grid.Column(header: "Ver Detalle", format: (item) =>
+{
+    var link = Html.ActionLink("Detalle", "Details", new { id = item.MP_ID_PAPEL });
+    return link;
+}),
+grid.Column(header: "Editar", format: (item) =>
+{
+    var link = Html.ActionLink("Editar", "Edit", new { id = item.MP_ID_PAPEL });
+    return link;
+})
+    ))
+                ;

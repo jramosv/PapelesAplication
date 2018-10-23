@@ -1,0 +1,51 @@
+﻿@model PapelesApp.Models.IPP_MAESTRO_PAPELES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <br>
+    <h4>Detalle de Papel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MP_CALIBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MP_CALIBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MP_ANCHO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MP_ANCHO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IPP_TIPOS_DE_PAPEL.TDP_CLAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IPP_TIPOS_DE_PAPEL.TDP_CLAVE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MP_CODIGO_ALTERNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MP_CODIGO_ALTERNO)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.MP_ID_PAPEL }) |
+    @Html.ActionLink("Ver listado", "Index")
+</p>

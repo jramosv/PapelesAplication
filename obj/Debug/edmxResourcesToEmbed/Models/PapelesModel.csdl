@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="IPP_MAESTRO_COSTO_PAPEL">
+    <Key>
+      <PropertyRef Name="ID_EMPRESA" />
+      <PropertyRef Name="ID_MAESTRO_PAPELES" />
+    </Key>
+    <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_MAESTRO_PAPELES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MCP_COSTO_PROMEDIO_Q" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_ULTIMO_COSTO_Q" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_COSTO_PROMEDIO_USD" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_ULTIMO_COSTO_USD" Type="Decimal" Precision="35" Scale="30" />
+    <NavigationProperty Name="IPP_MAESTRO_PAPELES" Relationship="Self.IPP_MAESTRO_COSTO_PAPEL_R02" FromRole="IPP_MAESTRO_COSTO_PAPEL" ToRole="IPP_MAESTRO_PAPELES" />
+  </EntityType>
+  <EntityType Name="IPP_MAESTRO_COSTO_PAPEL_BK">
+    <Key>
+      <PropertyRef Name="ID_EMPRESA" />
+      <PropertyRef Name="ID_MAESTRO_PAPELES" />
+    </Key>
+    <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_MAESTRO_PAPELES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MCP_COSTO_PROMEDIO_Q" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_ULTIMO_COSTO_Q" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_COSTO_PROMEDIO_USD" Type="Decimal" Precision="35" Scale="30" />
+    <Property Name="MCP_ULTIMO_COSTO_USD" Type="Decimal" Precision="35" Scale="30" />
+    <NavigationProperty Name="IPP_MAESTRO_PAPELES_BK" Relationship="Self.IPP_MAESTRO_COSTO_PAPEL_BK_R02" FromRole="IPP_MAESTRO_COSTO_PAPEL_BK" ToRole="IPP_MAESTRO_PAPELES_BK" />
+  </EntityType>
+  <EntityType Name="IPP_MAESTRO_PAPELES">
+    <Key>
+      <PropertyRef Name="MP_ID_PAPEL" />
+    </Key>
+    <Property Name="MP_ID_PAPEL" Type="Decimal" Precision="15" Scale="5" Nullable="false" />
+    <Property Name="MP_ID_TIPO_PAPEL" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_CALIBRE" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_ANCHO" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_CODIGO_ALTERNO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="IPP_MAESTRO_COSTO_PAPEL" Relationship="Self.IPP_MAESTRO_COSTO_PAPEL_R02" FromRole="IPP_MAESTRO_PAPELES" ToRole="IPP_MAESTRO_COSTO_PAPEL" />
+    <NavigationProperty Name="IPP_TIPOS_DE_PAPEL" Relationship="Self.SYS_C005397" FromRole="IPP_MAESTRO_PAPELES" ToRole="IPP_TIPOS_DE_PAPEL" />
+  </EntityType>
+  <EntityType Name="IPP_MAESTRO_PAPELES_BK">
+    <Key>
+      <PropertyRef Name="MP_ID_PAPEL" />
+    </Key>
+    <Property Name="MP_ID_PAPEL" Type="Decimal" Precision="15" Scale="5" Nullable="false" />
+    <Property Name="MP_ID_TIPO_PAPEL" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_CALIBRE" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_ANCHO" Type="Decimal" Precision="15" Scale="5" />
+    <Property Name="MP_CODIGO_ALTERNO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="IPP_MAESTRO_COSTO_PAPEL_BK" Relationship="Self.IPP_MAESTRO_COSTO_PAPEL_BK_R02" FromRole="IPP_MAESTRO_PAPELES_BK" ToRole="IPP_MAESTRO_COSTO_PAPEL_BK" />
+    <NavigationProperty Name="IPP_TIPOS_DE_PAPEL_BK" Relationship="Self.SYS_C0079834" FromRole="IPP_MAESTRO_PAPELES_BK" ToRole="IPP_TIPOS_DE_PAPEL_BK" />
+  </EntityType>
+  <EntityType Name="IPP_TIPOS_DE_PAPEL">
+    <Key>
+      <PropertyRef Name="TDP_CODIGO" />
+    </Key>
+    <Property Name="TDP_CODIGO" Type="Decimal" Precision="15" Scale="5" Nullable="false" />
+    <Property Name="TDP_CLAVE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_COLOR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_CALIDAD_DE_PAPEL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_CUENTA_CONTABLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_FACTOR_CONTABLE" Type="Decimal" Precision="15" Scale="5" />
+    <NavigationProperty Name="IPP_MAESTRO_PAPELES" Relationship="Self.SYS_C005397" FromRole="IPP_TIPOS_DE_PAPEL" ToRole="IPP_MAESTRO_PAPELES" />
+  </EntityType>
+  <EntityType Name="IPP_TIPOS_DE_PAPEL_BK">
+    <Key>
+      <PropertyRef Name="TDP_CODIGO" />
+    </Key>
+    <Property Name="TDP_CODIGO" Type="Decimal" Precision="15" Scale="5" Nullable="false" />
+    <Property Name="TDP_CLAVE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_COLOR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_CALIDAD_DE_PAPEL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_CUENTA_CONTABLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TDP_FACTOR_CONTABLE" Type="Decimal" Precision="15" Scale="5" />
+    <NavigationProperty Name="IPP_MAESTRO_PAPELES_BK" Relationship="Self.SYS_C0079834" FromRole="IPP_TIPOS_DE_PAPEL_BK" ToRole="IPP_MAESTRO_PAPELES_BK" />
+  </EntityType>
+  <Association Name="IPP_MAESTRO_COSTO_PAPEL_R02">
+    <End Role="IPP_MAESTRO_PAPELES" Type="Self.IPP_MAESTRO_PAPELES" Multiplicity="1" />
+    <End Role="IPP_MAESTRO_COSTO_PAPEL" Type="Self.IPP_MAESTRO_COSTO_PAPEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IPP_MAESTRO_PAPELES">
+        <PropertyRef Name="MP_ID_PAPEL" />
+      </Principal>
+      <Dependent Role="IPP_MAESTRO_COSTO_PAPEL">
+        <PropertyRef Name="ID_MAESTRO_PAPELES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IPP_MAESTRO_COSTO_PAPEL_BK_R02">
+    <End Role="IPP_MAESTRO_PAPELES_BK" Type="Self.IPP_MAESTRO_PAPELES_BK" Multiplicity="1" />
+    <End Role="IPP_MAESTRO_COSTO_PAPEL_BK" Type="Self.IPP_MAESTRO_COSTO_PAPEL_BK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IPP_MAESTRO_PAPELES_BK">
+        <PropertyRef Name="MP_ID_PAPEL" />
+      </Principal>
+      <Dependent Role="IPP_MAESTRO_COSTO_PAPEL_BK">
+        <PropertyRef Name="ID_MAESTRO_PAPELES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C005397">
+    <End Role="IPP_TIPOS_DE_PAPEL" Type="Self.IPP_TIPOS_DE_PAPEL" Multiplicity="0..1" />
+    <End Role="IPP_MAESTRO_PAPELES" Type="Self.IPP_MAESTRO_PAPELES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IPP_TIPOS_DE_PAPEL">
+        <PropertyRef Name="TDP_CODIGO" />
+      </Principal>
+      <Dependent Role="IPP_MAESTRO_PAPELES">
+        <PropertyRef Name="MP_ID_TIPO_PAPEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0079834">
+    <End Role="IPP_TIPOS_DE_PAPEL_BK" Type="Self.IPP_TIPOS_DE_PAPEL_BK" Multiplicity="0..1" />
+    <End Role="IPP_MAESTRO_PAPELES_BK" Type="Self.IPP_MAESTRO_PAPELES_BK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IPP_TIPOS_DE_PAPEL_BK">
+        <PropertyRef Name="TDP_CODIGO" />
+      </Principal>
+      <Dependent Role="IPP_MAESTRO_PAPELES_BK">
+        <PropertyRef Name="MP_ID_TIPO_PAPEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="IPP_MAESTRO_COSTO_PAPEL" EntityType="Self.IPP_MAESTRO_COSTO_PAPEL" />
+    <EntitySet Name="IPP_MAESTRO_COSTO_PAPEL_BK" EntityType="Self.IPP_MAESTRO_COSTO_PAPEL_BK" />
+    <EntitySet Name="IPP_MAESTRO_PAPELES" EntityType="Self.IPP_MAESTRO_PAPELES" />
+    <EntitySet Name="IPP_MAESTRO_PAPELES_BK" EntityType="Self.IPP_MAESTRO_PAPELES_BK" />
+    <EntitySet Name="IPP_TIPOS_DE_PAPEL" EntityType="Self.IPP_TIPOS_DE_PAPEL" />
+    <EntitySet Name="IPP_TIPOS_DE_PAPEL_BK" EntityType="Self.IPP_TIPOS_DE_PAPEL_BK" />
+    <AssociationSet Name="IPP_MAESTRO_COSTO_PAPEL_R02" Association="Self.IPP_MAESTRO_COSTO_PAPEL_R02">
+      <End Role="IPP_MAESTRO_PAPELES" EntitySet="IPP_MAESTRO_PAPELES" />
+      <End Role="IPP_MAESTRO_COSTO_PAPEL" EntitySet="IPP_MAESTRO_COSTO_PAPEL" />
+    </AssociationSet>
+    <AssociationSet Name="IPP_MAESTRO_COSTO_PAPEL_BK_R02" Association="Self.IPP_MAESTRO_COSTO_PAPEL_BK_R02">
+      <End Role="IPP_MAESTRO_PAPELES_BK" EntitySet="IPP_MAESTRO_PAPELES_BK" />
+      <End Role="IPP_MAESTRO_COSTO_PAPEL_BK" EntitySet="IPP_MAESTRO_COSTO_PAPEL_BK" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C005397" Association="Self.SYS_C005397">
+      <End Role="IPP_TIPOS_DE_PAPEL" EntitySet="IPP_TIPOS_DE_PAPEL" />
+      <End Role="IPP_MAESTRO_PAPELES" EntitySet="IPP_MAESTRO_PAPELES" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0079834" Association="Self.SYS_C0079834">
+      <End Role="IPP_TIPOS_DE_PAPEL_BK" EntitySet="IPP_TIPOS_DE_PAPEL_BK" />
+      <End Role="IPP_MAESTRO_PAPELES_BK" EntitySet="IPP_MAESTRO_PAPELES_BK" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
